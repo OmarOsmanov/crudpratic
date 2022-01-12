@@ -1,0 +1,64 @@
+﻿@model List<Employe>
+@{
+   
+    Layout = "~/Areas/admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg6">
+            <a asp-area="admin" asp-controller="employe" asp-action="Create" class="btn btn-danger">Create</a>
+        </div>
+        <div class="col-lg-12">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Image</th>
+                        <th scope="col">Name</th>
+
+
+                        <th scope="col">Email</th>
+                        <th scope="col">Age</th>
+                        <th scope="col">Position</th>
+                
+                        <th scope="col">MyProporty</th>
+
+
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{int i = 0;}
+                    @foreach (var item in Model)
+                    {
+                        i++;
+                    <tr>
+
+                        <th scope="row">@i</th>
+                        <th> <img src="~/Uploads/@item.Image" alt="" /> </th>
+
+                        <td>@item.Email</td>
+                        <td>@item.Name</td>
+                        <td>@item.Email</td>
+                        <td>@item.Age</td>
+                        <td>@item.MyProperty</td>
+
+                        <td>
+                            <a asp-area="admin" asp-controller="employe" asp-action="update" asp-route-id="@item.Id" class="btn btn-success">Update</a>
+                            <a asp-area="admin" asp-controller="employe" asp-action="delete" asp-route-id="@item.Id" onclick="return confirm('EminSiniz?')" class="btn btn-danger">Delete</a>
+
+                        </td>
+
+                    </tr>
+                    }
+
+
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
